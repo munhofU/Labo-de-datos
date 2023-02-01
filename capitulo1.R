@@ -76,10 +76,10 @@ str(data)
 #"1.9"
 
 data_state <- data.frame(
-  state_name = state.name,
-  state_region = state.region,
-  state_area = state.area,
-  state.center
+    state_name = state.name,
+    state_region = state.region,
+    state_area = state.area,
+    state.center
 )
 
 stats_state_region <- table(state.region)
