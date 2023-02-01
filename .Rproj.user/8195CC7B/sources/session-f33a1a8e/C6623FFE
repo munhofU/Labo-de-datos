@@ -3,9 +3,9 @@
     "path": "C:/Users/facun/OneDrive/Escritorio/Labo de datos/capitulo1.R",
     "project_path": "capitulo1.R",
     "type": "r_source",
-    "hash": "0",
+    "hash": "588660956",
     "contents": "",
-    "dirty": true,
+    "dirty": false,
     "created": 1675213306301.0,
     "source_on_save": false,
     "relative_order": 1,
@@ -17,11 +17,11 @@
         "scrollLine": "59"
     },
     "folds": "",
-    "lastKnownWriteTime": 1675213562,
+    "lastKnownWriteTime": 1675218366,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1675218133756,
+    "last_content_update": 1675218366578,
     "read_only": false,
     "read_only_alternatives": []
 }
