@@ -86,3 +86,42 @@ stats_state_region <- table(state.region)
 state_area_less <- data_state[data_state$state_area < 10000,]
 south_state <- data_state[data_state$state_region == "South",]
 center_south <- south_state[which.min(south_state$y),]
+
+#1.10
+
+data_mt_cars <- mtcars
+
+mt_cars_4_gears <- data_mt_cars[data_mt_cars$gear==4,] #a
+mt_cars_4_gears_name <- rownames(mt_cars_4_gears) #a
+
+mt_cars_sub <- mtcars[mtcars$disp > 150 & mtcars$mpg > 20,] #b
+
+mt_cars_4_gears_y_manual <- data_mt_cars[data_mt_cars$gear==4 & data_mt_cars$am==1,]#c
+mt_cars_4_gears_y_manual_len <- length(rownames(mt_cars_4_gears_y_manual)) #c
+
+mt_cars_4_gears_o_manual <- data_mt_cars[data_mt_cars$gear==4 | data_mt_cars$am==1,]#d
+mt_cars_4_gears_o_manual_len <- length(rownames(mt_cars_4_gears_o_manual))#d
+
+mt_cars_2_carb <- data_mt_cars[data_mt_cars$carb == 2,] #e
+mpg_mean_mt_cars_2_carb <- mean(mt_cars_2_carb$mpg) #e
+
+#1.11
+
+data_mt_cars$am <-factor(mtcars$am, levels = c(0, 1), labels = c("auto", "manual")) #a
+
+cant_data_mt_cars_manual <- table(data_mt_cars$am)[1] #b
+cant_data_mt_cars_auto <- table(data_mt_cars$am)[2] #b
+
+mt_cars_greater_25_mpg <- data_mt_cars[data_mt_cars$mpg > 25,] #c
+cant_mt_cars_greater_25_mpg_manual <- table(mt_cars_greater_25_mpg$am)[1] #c
+cant_mt_cars_greater_25_mpg_auto <- table(mt_cars_greater_25_mpg$am)[2] #c
+
+#1.12
+
+data_hot_dogs <- fosdata::hot_dogs
+var_hot_dogs <- str(data_hot_dogs) #a 3 var, type: factor,int,int
+kind_hot_dogs <- data_hot_dogs$type[2] #b are: beef, meat,Poultry
+beef_hot_dogs <- data_hot_dogs[data_hot_dogs$type == "Beef",] #c
+beef_hot_dogs_calories_mean <- mean(beef_hot_dogs$calories) #c
+
+#1.13
