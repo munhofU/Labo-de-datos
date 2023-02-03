@@ -125,3 +125,107 @@ beef_hot_dogs <- data_hot_dogs[data_hot_dogs$type == "Beef",] #c
 beef_hot_dogs_calories_mean <- mean(beef_hot_dogs$calories) #c
 
 #1.13
+
+drinks_wages <- HistData::DrinksWages
+
+#a 70 obs, 6 variables, Factor, Factor , int int num int
+str(drinks_wages)
+
+#b factory worker
+wage_profesion <- drinks_wages[which.min(drinks_wages$wage),]
+
+#c
+workers_surveyed <- sum(drinks_wages$n)
+
+#d
+mean_wage <- drinks_wages$wage * drinks_wages$n / workers_surveyed
+drinks_wages <- cbind(drinks_wages , mean_wage)
+
+#1.14
+
+batting <- Lahman::Batting
+str(batting) #a 110495 obs. of  22 variables
+head(batting)
+year <- names(table(batting$yearID))
+player <- names(table(batting$playerID))
+
+X3B_total_by_year <- c()
+for (i in year) {
+    x3b_by_year <- batting[batting$yearID == i,]$X3B
+    X3B_total_by_year<- c(X3B_total_by_year, sum(x3b_by_year))
+}
+X3B_total_by_year_list <- data.frame(year, X3B_total_by_year)
+max_year_X3B <- year[which.max(X3B_total_by_year_list$X3B_total_by_year)]
+
+X3B_by_year_max <- c()
+player_whit_max_X3B_by_year <- c()
+
+for (i in year) 
+{
+    batting_in_year <- batting[batting$yearID == i,]
+    player_in_year <-  names(table(batting_in_year$playerID))
+    player_X3B_in_year <- c()
+    X3B_in_year <- c()
+    for (p in player_in_year)
+    {
+        batting_in_year_by_player <- batting_in_year[batting_in_year$playerID == p,]
+        X3B_in_year_by_player <- sum(batting_in_year_by_player$X3B)
+        player_X3B_in_year <- c(player_X3B_in_year,X3B_in_year_by_player)
+        X3B_in_year <- c(X3B_in_year,X3B_in_year_by_player)
+    }
+    max_X3B_by_player_in_year <- which.max(player_X3B_in_year)
+    player_max_X3B_in_year <- player_in_year[max_X3B_by_player_in_year]
+    max_X3B_in_year <- X3B_in_year[max_X3B_by_player_in_year]
+    X3B_by_year_max <- c(X3B_by_year_max, max_X3B_in_year)
+    player_whit_max_X3B_by_year <- c(player_whit_max_X3B_by_year, player_max_X3B_in_year)
+}
+
+ix_max_X3B <- which.max(X3B_by_year_max)
+max_X3B <- X3B_by_year_max[ix_max_X3B]
+player_whit_max_X3B <- player_whit_max_X3B_by_year[ix_max_X3B]
+year_whit_player_whit_max_X3B <- year[ix_max_X3B]
+
+print(c("year:", year_whit_player_whit_max_X3B,
+        ", playerId:", player_whit_max_X3B,
+        ", X3B:",max_X3B)
+      )
+
+X3B_by_year_max <- c()
+player_whit_max_X3B_by_year <- c()
+year_since_1960 <- year[year>=1960]
+
+for (i in year_since_1960) 
+{
+    batting_in_year <- batting[batting$yearID == i,]
+    player_in_year <-  names(table(batting_in_year$playerID))
+    player_X3B_in_year <- c()
+    X3B_in_year <- c()
+    for (p in player_in_year)
+    {
+        batting_in_year_by_player <- batting_in_year[batting_in_year$playerID == p,]
+        X3B_in_year_by_player <- sum(batting_in_year_by_player$X3B)
+        player_X3B_in_year <- c(player_X3B_in_year,X3B_in_year_by_player)
+        X3B_in_year <- c(X3B_in_year,X3B_in_year_by_player)
+    }
+    max_X3B_by_player_in_year <- which.max(player_X3B_in_year)
+    player_max_X3B_in_year <- player_in_year[max_X3B_by_player_in_year]
+    max_X3B_in_year <- X3B_in_year[max_X3B_by_player_in_year]
+    X3B_by_year_max <- c(X3B_by_year_max, max_X3B_in_year)
+    player_whit_max_X3B_by_year <- c(player_whit_max_X3B_by_year, player_max_X3B_in_year)
+}
+
+ix_max_X3B <- which.max(X3B_by_year_max)
+max_X3B <- X3B_by_year_max[ix_max_X3B]
+player_whit_max_X3B <- player_whit_max_X3B_by_year[ix_max_X3B]
+year_whit_player_whit_max_X3B <- year_since_1960[ix_max_X3B]
+
+print(c("year:", year_whit_player_whit_max_X3B,
+        ", playerId:", player_whit_max_X3B,
+        ", X3B:",max_X3B)
+)
+
+
+
+
+
+
