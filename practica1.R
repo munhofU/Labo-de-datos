@@ -173,6 +173,4 @@ for (i in 1:length(nombres))
     colnames(static_dates) <- nombre_col
 }
 
-# Transpone todas las columnas menos la primer
 static_dates <- data.frame(t(static_dates))
-# Añadimos los nombres de las columnas
